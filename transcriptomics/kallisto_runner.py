@@ -38,9 +38,9 @@ clean_fastq_dir = '/home/adrian/projects/brca2/results/clean_fastq/'
 results_dir = '/home/adrian/projects/brca2/results/kallisto/kallisto.{}/'.format(boots)
 transcriptome_index = '/home/adrian/software/kallisto/ensembl_v96/transcriptome.idx'
 
-strand_flag = '--rf-stranded'   # processed 115,770,977 reads, 51,027,094 reads pseudoaligned
-strand_flag = '--fr-stranded'   # processed 115,770,977 reads, 50,260,575 reads pseudoaligned
-strand_flag = ''                # processed 115,770,977 reads, 101,434,048 reads pseudoaligned
+#strand_flag = '--rf-stranded'
+#strand_flag = '--fr-stranded'
+strand_flag = ''
 
 ###
 ### 1. recover labels
@@ -49,6 +49,7 @@ printt('recover labels...')
 
 labels = os.listdir(clean_fastq_dir)
 labels.sort()
+print(labels)
 
 ###
 ### 2. call kallisto quant
@@ -58,3 +59,4 @@ if os.path.exists(results_dir) == False:
 
 for label in labels:
     kallisto_caller(label)
+    #sys.exit()
