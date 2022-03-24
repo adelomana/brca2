@@ -20,7 +20,7 @@ library(biomaRt)
 ###
 results_dir = '/home/adrian/projects/brca2/results/tpm/'
 kallisto_dir = "/home/adrian/projects/brca2/results/kallisto/kallisto.100"
-metadata_file = '/home/adrian/projects/brca2/metadata/metadata_verbose.tsv'
+metadata_file = '/home/adrian/projects/brca2/metadata/brca2.metadata.tsv'
 
 ###
 ### 2. annotation
@@ -37,7 +37,7 @@ View(table96)
 ### 3. read files
 ###
 metadata = read.table(metadata_file, header=TRUE, sep="\t")
-local_samples = metadata$true.labels
+local_samples = metadata$folder
 files = file.path(kallisto_dir, local_samples, "abundance.h5")
 labels = sapply(strsplit(files, split='/',fixed=TRUE), function(x) (x[9]))
 print(files)
